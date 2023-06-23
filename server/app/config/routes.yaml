@@ -1,0 +1,17 @@
+portfolioControllers:
+    resource:
+        path: ../src/Portfolio/Infrastructure/Controller/
+        namespace: App\Portfolio\Infrastructure\Controller
+    type: attribute
+
+allocationControllers:
+    resource:
+        path: ../src/Allocation/Infrastructure/Controller/
+        namespace: App\Allocation\Infrastructure\Controller
+    type: attribute
+
+orderControllers:
+    resource:
+        path: ../src/Order/Infrastructure/Controller/
+        namespace: App\Order\Infrastructure\Controller
+    type: attribute

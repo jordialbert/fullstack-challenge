@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Order\Domain\Order" table="`order`">
+        <id name="id" type="custom_uuid" column="id" length="36" />
+
+        <field name="shares" column="`shares`" type="shares" />
+        <field name="type" column="`type`" type="order_type" length="50" />
+        <field name="state" column="`state`" type="order_state" length="50" />
+        <field name="createdAt" column="`created_at`" type="datetime" />
+        <field name="updatedAt" column="`updated_at`" type="datetime" />
+
+        <many-to-one field="portfolio" target-entity="App\Portfolio\Domain\Portfolio" inversed-by="orders">
+            <join-column name="portfolio_id" referenced-column-name="id" />
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-one>
+
+        <many-to-one field="allocation" target-entity="App\Allocation\Domain\Allocation" inversed-by="orders">
+            <join-column name="allocation_id" column-definition="allocation_id" referenced-column-name="id" />
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>
